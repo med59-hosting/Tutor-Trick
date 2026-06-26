@@ -1,10 +1,10 @@
-import Navbar from "@/components/Navbar";
+import NavbarWrapper from "@/components/NavbarWrapper";
 import Reveal from "@/components/Reveal";
 
 export default function About() {
   return (
     <main className="min-h-screen">
-      <Navbar />
+      <NavbarWrapper />
       <section className="max-w-3xl mx-auto px-6 py-20">
         <Reveal>
           <p className="text-sm font-semibold text-[#6c5ce7] mb-3 uppercase tracking-wide">About us</p>

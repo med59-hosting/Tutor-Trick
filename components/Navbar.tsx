@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { signOut } from "next-auth/react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -10,8 +11,10 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ user }: { user?: { name?: string | null } | null }) {
   const [open, setOpen] = useState(false);
+  const loggedIn = !!user;
+
   return (
     <header className="sticky top-0 z-50 bg-[#f7f6f2]/85 backdrop-blur border-b border-black/5">
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
@@ -27,8 +30,17 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-2">
-          <a href="/login" className="px-4 py-2 rounded-lg text-sm font-semibold hover:bg-black/5 transition">Log in</a>
-          <a href="/register" className="px-4 py-2 rounded-lg text-sm bg-[#1b1b2e] text-white font-semibold hover:opacity-90 transition">Sign up</a>
+          {loggedIn ? (
+            <>
+              <a href="/dashboard" className="px-4 py-2 rounded-lg text-sm bg-[#1b1b2e] text-white font-semibold hover:opacity-90 transition">Dashboard</a>
+              <button onClick={() => signOut({ callbackUrl: "/" })} className="px-4 py-2 rounded-lg text-sm font-semibold hover:bg-black/5 transition">Log out</button>
+            </>
+          ) : (
+            <>
+              <a href="/login" className="px-4 py-2 rounded-lg text-sm font-semibold hover:bg-black/5 transition">Log in</a>
+              <a href="/register" className="px-4 py-2 rounded-lg text-sm bg-[#1b1b2e] text-white font-semibold hover:opacity-90 transition">Sign up</a>
+            </>
+          )}
         </div>
 
         <button onClick={() => setOpen(true)} className="md:hidden p-2" aria-label="Open menu">
@@ -51,8 +63,17 @@ export default function Navbar() {
             ))}
           </div>
           <div className="mt-6 flex flex-col gap-2">
-            <a href="/login" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center font-semibold border border-black/15">Log in</a>
-            <a href="/register" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center bg-[#1b1b2e] text-white font-semibold">Sign up</a>
+            {loggedIn ? (
+              <>
+                <a href="/dashboard" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center bg-[#1b1b2e] text-white font-semibold">Dashboard</a>
+                <button onClick={() => signOut({ callbackUrl: "/" })} className="px-4 py-3 rounded-lg text-center font-semibold border border-black/15">Log out</button>
+              </>
+            ) : (
+              <>
+                <a href="/login" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center font-semibold border border-black/15">Log in</a>
+                <a href="/register" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center bg-[#1b1b2e] text-white font-semibold">Sign up</a>
+              </>
+            )}
           </div>
         </aside>
       </div>

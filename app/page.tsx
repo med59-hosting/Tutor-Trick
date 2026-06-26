@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import NavbarWrapper from "@/components/NavbarWrapper";
 import Typewriter from "@/components/Typewriter";
 import Reveal from "@/components/Reveal";
 
@@ -7,7 +7,7 @@ const unis = ["FAST", "NUST", "GIKI", "UET", "COMSATS", "AIR", "BAHRIA"];
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navbar />
+      <NavbarWrapper />
 
       {/* hero */}
       <section className="max-w-5xl mx-auto px-6 pt-20 pb-24 text-center">

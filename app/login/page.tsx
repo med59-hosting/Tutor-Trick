@@ -13,7 +13,8 @@ export default function Login() {
     setErr("");
     const res = await signIn("credentials", { email, password, redirect: false });
     if (res?.error) setErr("Wrong email or password.");
-    else r.push("/dashboard");
+    else r.push("/");
+    
   }
 
   return (
