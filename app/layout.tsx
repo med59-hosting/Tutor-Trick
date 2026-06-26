@@ -9,6 +9,8 @@ const display = Space_Grotesk({
 });
 const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 
+<html lang="en" data-scroll-behavior="smooth"></html>
+
 export const metadata: Metadata = {
   title: "TutorTrick — learn with quizzes, tricks & AI",
   description: "Quizzes that teach you the trick to remember every answer.",
