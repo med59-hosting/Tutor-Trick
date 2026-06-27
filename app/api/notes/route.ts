@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   if (!file || !title) return NextResponse.json({ error: "File and title required." }, { status: 400 });
   if (file.type !== "application/pdf") return NextResponse.json({ error: "Only PDF files allowed." }, { status: 400 });
 
-  const blob = await put(`notes/${Date.now()}-${file.name}`, file, { access: "public" });
+  const blob = await put(`notes/${Date.now()}-${file.name}`, file, { access: "private" });
 
   await prisma.note.create({
     data: { title, subject, url: blob.url, uploadedBy: (session!.user as any).name || "Teacher" },

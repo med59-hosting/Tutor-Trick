@@ -15,7 +15,11 @@ export default async function ViewNote({ params }: { params: Promise<{ id: strin
         <h1 className="font-display font-bold text-3xl mt-2 mb-1">{note.title}</h1>
         <p className="text-[#5a5b76] mb-6">{note.subject} · by {note.uploadedBy}</p>
         <div className="rounded-2xl overflow-hidden border border-black/10">
-          <iframe src={`${note.url}#toolbar=0&navpanes=0`} className="w-full" style={{ height: "80vh" }} />
+          <iframe
+            src={`/api/notes/file?p=${encodeURIComponent(note.url)}#toolbar=0&navpanes=0`}
+            className="w-full"
+            style={{ height: "80vh" }}
+          />
         </div>
         <p className="text-xs text-[#5a5b76] mt-3">This material is for reading only.</p>
       </section>
