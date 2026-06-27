@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
+import ProfileMenu from "./ProfileMenu";
 
 const links = [
   { href: "/", label: "Home" },
@@ -31,10 +32,7 @@ export default function Navbar({ user }: { user?: { name?: string | null } | nul
 
         <div className="hidden md:flex items-center gap-2">
           {loggedIn ? (
-            <>
-              <a href="/dashboard" className="px-4 py-2 rounded-lg text-sm bg-[#1b1b2e] text-white font-semibold hover:opacity-90 transition">Dashboard</a>
-              <button onClick={() => signOut({ callbackUrl: "/" })} className="px-4 py-2 rounded-lg text-sm font-semibold hover:bg-black/5 transition">Log out</button>
-            </>
+            <ProfileMenu user={user as any} />
           ) : (
             <>
               <a href="/login" className="px-4 py-2 rounded-lg text-sm font-semibold hover:bg-black/5 transition">Log in</a>
@@ -42,6 +40,7 @@ export default function Navbar({ user }: { user?: { name?: string | null } | nul
             </>
           )}
         </div>
+
 
         <button onClick={() => setOpen(true)} className="md:hidden p-2" aria-label="Open menu">
           <span className="block w-6 h-0.5 bg-[#1b1b2e] mb-1.5"></span>
