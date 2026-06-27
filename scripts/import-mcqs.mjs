@@ -5,7 +5,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 // 👇 change this to your docx filename / chapter label if needed
-const FILE = "50 MCQS-Ch4_Ch5.docx";
+const FILE = "ch7-80-mcqs.docx";
 
 const stripBold = (s) => s.replace(/\*\*/g, "").trim();
 
