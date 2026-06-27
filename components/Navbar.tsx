@@ -41,7 +41,6 @@ export default function Navbar({ user }: { user?: { name?: string | null } | nul
           )}
         </div>
 
-
         <button onClick={() => setOpen(true)} className="md:hidden p-2" aria-label="Open menu">
           <span className="block w-6 h-0.5 bg-[#1b1b2e] mb-1.5"></span>
           <span className="block w-6 h-0.5 bg-[#1b1b2e] mb-1.5"></span>
@@ -49,33 +48,51 @@ export default function Navbar({ user }: { user?: { name?: string | null } | nul
         </button>
       </nav>
 
-      <div className={`fixed inset-0 z-50 md:hidden ${open ? "visible" : "invisible"}`}>
-        <div onClick={() => setOpen(false)} className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}></div>
-        <aside className={`absolute top-0 right-0 h-full w-72 bg-[#f7f6f2] shadow-2xl p-6 transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"}`}>
-          <div className="flex justify-between items-center mb-8">
-            <span className="font-display font-bold text-lg">Menu</span>
-            <button onClick={() => setOpen(false)} aria-label="Close menu" className="text-3xl leading-none">×</button>
-          </div>
-          <div className="flex flex-col gap-1">
-            {links.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="px-3 py-3 rounded-lg font-semibold hover:bg-black/5 transition">{l.label}</a>
-            ))}
-          </div>
-          <div className="mt-6 flex flex-col gap-2">
-            {loggedIn ? (
-              <>
-                <a href="/dashboard" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center bg-[#1b1b2e] text-white font-semibold">Dashboard</a>
-                <button onClick={() => signOut({ callbackUrl: "/" })} className="px-4 py-3 rounded-lg text-center font-semibold border border-black/15">Log out</button>
-              </>
-            ) : (
-              <>
-                <a href="/login" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center font-semibold border border-black/15">Log in</a>
-                <a href="/register" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center bg-[#1b1b2e] text-white font-semibold">Sign up</a>
-              </>
-            )}
-          </div>
-        </aside>
-      </div>
+      {open && (
+        <div className="md:hidden">
+          <div
+            onClick={() => setOpen(false)}
+            style={{ position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.5)", zIndex: 60 }}
+          />
+          <aside
+            style={{
+              position: "fixed",
+              top: 0,
+              right: 0,
+              height: "100dvh",
+              width: "18rem",
+              backgroundColor: "#1b1b2e",
+              zIndex: 70,
+              padding: "1.5rem",
+              color: "white",
+              overflowY: "auto",
+            }}
+          >
+            <div className="flex justify-between items-center mb-8">
+              <span className="font-display font-bold text-lg text-white">Menu</span>
+              <button onClick={() => setOpen(false)} aria-label="Close menu" className="text-3xl leading-none text-white">×</button>
+            </div>
+            <div className="flex flex-col gap-1">
+              {links.map((l) => (
+                <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="px-3 py-3 rounded-lg font-semibold text-white hover:bg-white/10 transition">{l.label}</a>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-col gap-2">
+              {loggedIn ? (
+                <>
+                  <a href="/dashboard" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center bg-[#f5a524] text-[#1b1b2e] font-semibold">Dashboard</a>
+                  <button onClick={() => signOut({ callbackUrl: "/" })} className="px-4 py-3 rounded-lg text-center font-semibold border border-white/25 text-white">Log out</button>
+                </>
+              ) : (
+                <>
+                  <a href="/login" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center font-semibold border border-white/25 text-white">Log in</a>
+                  <a href="/register" onClick={() => setOpen(false)} className="px-4 py-3 rounded-lg text-center bg-[#f5a524] text-[#1b1b2e] font-semibold">Sign up</a>
+                </>
+              )}
+            </div>
+          </aside>
+        </div>
+      )}
     </header>
   );
 }

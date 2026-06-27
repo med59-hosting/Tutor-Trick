@@ -51,7 +51,6 @@ export default function Register() {
       <input className="w-full border rounded p-2" placeholder="Password" type="password" onChange={(e) => set("password", e.target.value)} />
       <select className="w-full border rounded p-2" onChange={(e) => set("role", e.target.value)}>
         <option value="student">I&apos;m a student</option>
-        <option value="teacher">I&apos;m a teacher</option>
       </select>
       <div>
         <label className="text-sm text-gray-600">Profile picture</label>
