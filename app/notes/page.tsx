@@ -2,10 +2,13 @@ import NavbarWrapper from "@/components/NavbarWrapper";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import Reveal from "@/components/Reveal";
+import { getAccess } from "@/lib/access";
+import LockedScreen from "@/components/LockedScreen";
 
 export default async function Notes() {
-  const session = await auth();
-  const isTeacher = (session?.user as any)?.role === "teacher";
+  const { allowed, user } = await getAccess();
+  if (!allowed) return <LockedScreen />;
+  const isTeacher = user?.role === "teacher";
   const notes = await prisma.note.findMany({ orderBy: { createdAt: "desc" } });
 
   return (

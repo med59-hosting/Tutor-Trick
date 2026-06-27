@@ -16,6 +16,8 @@ model User {
   address      String    @default("")
   image        String    @default("")
   role         String    @default("student")
+  isPaid       Boolean   @default(false)
+  lastDevice   String    @default("")
   createdAt    DateTime  @default(now())
   attempts     Attempt[]
 }

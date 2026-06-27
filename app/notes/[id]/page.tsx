@@ -1,9 +1,13 @@
 import NavbarWrapper from "@/components/NavbarWrapper";
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
+import { getAccess } from "@/lib/access";
+import LockedScreen from "@/components/LockedScreen";
 
 export default async function ViewNote({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const { allowed } = await getAccess();
+  if (!allowed) return <LockedScreen />;
   const note = await prisma.note.findUnique({ where: { id } });
   if (!note) notFound();
 
