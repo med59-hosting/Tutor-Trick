@@ -1,7 +1,7 @@
 import { getAccess } from "@/lib/access";
 import LockedScreen from "@/components/LockedScreen";
 import NavbarWrapper from "@/components/NavbarWrapper";
-
+//page.tsx for random quiz generation
 export default async function RandomSetup() {
   const { allowed } = await getAccess();
   if (!allowed) return <LockedScreen />;
