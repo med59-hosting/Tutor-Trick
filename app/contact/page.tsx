@@ -12,7 +12,7 @@ export default function Contact() {
           <p className="text-lg text-[#5a5b76] mb-10">Questions about admissions or our courses? Reach out — we usually reply within a day.</p>
         </Reveal>
         <div className="grid sm:grid-cols-3 gap-5">
-          {[["📧", "Email", "hello@tutortrick.pk"], ["📞", "Phone", "+92 300 0000000"], ["📍", "Location", "Lahore, Pakistan"]].map(([icon, label, val]) => (
+          {[["📧", "Email", "tutortrick@gmail.com"], ["📞", "Phone", "+92 328 9819495"], ["📍", "Location", "Lahore, Pakistan"]].map(([icon, label, val]) => (
             <div key={label} className="bg-white rounded-2xl border border-black/5 p-6 text-center">
               <div className="text-2xl mb-2">{icon}</div>
               <div className="font-display font-bold">{label}</div>

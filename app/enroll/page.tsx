@@ -1,6 +1,6 @@
 import NavbarWrapper from "@/components/NavbarWrapper";
 
-const WHATSAPP_NUMBER = "923000000000"; // your number, country code, no + or spaces
+const WHATSAPP_NUMBER = "923289819495"; // your number, country code, no + or spaces
 const msg = encodeURIComponent("Hi! I want to enroll in TutorTrick. Here is my payment screenshot and reference ID.");
 
 export default function Enroll() {
@@ -17,9 +17,8 @@ export default function Enroll() {
             <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-full bg-[#1b1b2e] text-white grid place-items-center font-bold">1</span><h3 className="font-display font-bold text-lg">Send the fee</h3></div>
             <p className="text-[#5a5b76] text-sm mb-2">Send the amount to any of these:</p>
             <ul className="text-sm space-y-1">
-              <li>🏦 <b>Bank Account:</b> 0000 0000 0000 0000</li>
-              <li>📱 <b>EasyPaisa / JazzCash:</b> 03XX-XXXXXXX</li>
-              <li>👤 <b>Account holder:</b> Your Name Here</li>
+              <li>📱 <b>JazzCash:</b> 0328-9819495</li>
+              <li>👤 <b>Account holder:</b> Tutor Trick</li>
             </ul>
           </div>
 
