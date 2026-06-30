@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   const blob = await put(`notes/${Date.now()}-${file.name}`, file, { access: "private" });
 
   await prisma.note.create({
-    data: { title, subject, url: blob.url, uploadedBy: (session!.user as any).name || "Teacher" },
+    data: { title, subject, url: blob.url, uploadedBy:  "TutorTrick" },
   });
 
   return NextResponse.json({ ok: true });

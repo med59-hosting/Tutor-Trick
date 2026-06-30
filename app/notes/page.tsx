@@ -35,7 +35,7 @@ export default async function Notes() {
                   <div className="text-3xl mb-3">📄</div>
                   <p className="text-xs font-bold uppercase tracking-wide text-[#f5a524] mb-1">{n.subject}</p>
                   <h3 className="font-display font-bold text-lg mb-1">{n.title}</h3>
-                  <p className="text-xs text-[#5a5b76] mb-4">by {n.uploadedBy}</p>
+                  <p className="text-xs text-[#5a5b76] mb-4">by TutorTrick</p>
                   <a href={`/notes/${n.id}`} className="mt-auto text-center px-4 py-2 rounded-lg bg-[#f5a524] text-[#1b1b2e] font-bold hover:opacity-90 transition">Read</a>
                 </div>
               </Reveal>
