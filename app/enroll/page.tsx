@@ -1,4 +1,5 @@
 import NavbarWrapper from "@/components/NavbarWrapper";
+import OfferBanner from "@/components/OfferBanner";
 
 const WHATSAPP_NUMBER = "923289819495"; // your number, country code, no + or spaces
 const msg = encodeURIComponent("Hi! I want to enroll in TutorTrick. Here is my payment screenshot and reference ID.");
@@ -11,6 +12,8 @@ export default function Enroll() {
         <p className="text-sm font-semibold text-[#6c5ce7] mb-3 uppercase tracking-wide">Enrollment</p>
         <h1 className="font-display font-bold text-4xl mb-4">Enroll to unlock everything 🚀</h1>
         <p className="text-[#5a5b76] mb-10">Get full access to all quizzes, notes, and AI practice. Follow these 3 simple steps.</p>
+
+        <OfferBanner />
 
         <div className="space-y-4">
           <div className="bg-white rounded-2xl border border-black/5 p-6">

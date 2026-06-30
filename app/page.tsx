@@ -24,7 +24,7 @@ export default function Home() {
           ]} />
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <a href="/register" className="px-7 py-3.5 rounded-xl bg-[#f5a524] text-[#1b1b2e] font-bold hover:opacity-90 transition">Start preparing free</a>
+          <a href="/register" className="px-7 py-3.5 rounded-xl bg-[#f5a524] text-[#1b1b2e] font-bold hover:opacity-90 transition">Start preparing Now</a>
           <a href="/progress" className="px-7 py-3.5 rounded-xl border-2 border-[#1b1b2e]/15 font-bold hover:border-[#1b1b2e]/40 transition">See our results</a>
         </div>
       </section>
