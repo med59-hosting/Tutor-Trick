@@ -4,18 +4,19 @@ import NavbarWrapper from "@/components/NavbarWrapper";
 import { prisma } from "@/lib/prisma";
 import QuizRunner from "../QuizRunner";
 
-export default async function PlayQuiz({ searchParams }: { searchParams: Promise<{ chapter?: string; count?: string }> }) {
+export default async function PlayQuiz({ searchParams }: { searchParams: Promise<{ subject?: string; chapter?: string; count?: string }> }) {
   const { allowed } = await getAccess();
   if (!allowed) return <LockedScreen />;
 
-  const { chapter, count } = await searchParams;
+  const { subject, chapter, count } = await searchParams;
+  const take = Math.min(Math.max(Number(count) || 10, 1), 50);
 
   let questions;
-  if (chapter) {
-    questions = await prisma.question.findMany({ where: { chapter }, take: 30 });
+  const filter = subject || chapter; // both live in the `chapter` field
+  if (filter) {
+    const all = await prisma.question.findMany({ where: { chapter: filter }, take: 200 });
+    questions = all.sort(() => Math.random() - 0.5).slice(0, take);
   } else {
-    const take = Math.min(Number(count) || 10, 50);
-    // random-ish: grab more, shuffle, slice
     const all = await prisma.question.findMany({ take: 200 });
     questions = all.sort(() => Math.random() - 0.5).slice(0, take);
   }

@@ -27,6 +27,7 @@ model Question {
   topic         String
   chapter       String   @default("General")
   text          String   @db.Text
+  subject       String   @default("")
   options       Json
   correctIndex  Int
   solutionSteps String   @db.Text
