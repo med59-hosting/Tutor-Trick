@@ -20,7 +20,7 @@ export default function Enroll() {
             <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-full bg-[#1b1b2e] text-white grid place-items-center font-bold">1</span><h3 className="font-display font-bold text-lg">Send the fee</h3></div>
             <p className="text-[#5a5b76] text-sm mb-2">Send the amount to any of these:</p>
             <ul className="text-sm space-y-1">
-              <li>📱 <b>Easypaisa:</b> 0307-5985993</li>
+              <li>📱 <b>Easypaisa:</b> 0370-5985993</li>
               <li>👤 <b>Account holder:</b> Hafiz Muhammad Shazil Bari</li>
             </ul>
           </div>
